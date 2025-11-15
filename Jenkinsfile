@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'agent1' }
 
     parameters {
         string(name: 'NAME', defaultValue: 'World', description: 'Name parameter')
