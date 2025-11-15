@@ -12,3 +12,16 @@ services:
 
     volumes:
       - ./jenkins_home:/var/jenkins_home
+
+  jenkins-agent:
+    image: jenkins/inbound-agent
+    container_name: jenkins-agent
+    restart: unless-stopped
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_NAME=agent1
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      - JENKINS_SECRET=8eab4097cc59401bdcfc440d108f1868571907bdee6488eae0b36ffa116f6913
+    depends_on:
+      - jenkins
+
